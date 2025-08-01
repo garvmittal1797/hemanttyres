@@ -45,8 +45,8 @@ jobs:
           git pull origin main
           
           echo "Installing/updating Python dependencies..."
-          # Use the full path to pip in the virtual environment
-          $PROJECT_PATH/venv/bin/pip install -r requirements.txt
+          # Use the correct, absolute path to the venv's pip executable
+          **/home/ubuntu/flaskapp/venv/bin/pip install -r requirements.txt**
           
           echo "Restarting application service..."
           sudo systemctl restart flaskapp.service
