@@ -9,15 +9,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy via SSH
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ubuntu
         key: ${{ secrets.EC2_KEY }}
         script: |
-          cd YOUR_FLASK_REPO
-          git pull
+          # Navigate to the project directory
+          cd ~/hemanttyres
+          
+          # Pull the latest changes from the main branch
+          git pull origin main
+          
+          # Activate the virtual environment
           source venv/bin/activate
+          
+          # Install/update dependencies
           pip install -r requirements.txt
-          sudo systemctl restart flaskapp
+          
+          # Restart the Flask application service
+          # This now uses your existing service file
+          sudo systemctl restart hemanttyres
+          
+          # Optional: Check the status of the service to ensure it restarted correctly
+          sudo systemctl status hemanttyres
