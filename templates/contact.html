@@ -4,193 +4,630 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us | Hemant Tyre Zone</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+  
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
-    }
-
-    .contact-section {
-      padding: 60px 20px;
-      background: #f7f7f7;
+    .contact-hero {
+      background: var(--gradient-secondary);
+      padding: 150px 0 100px;
       text-align: center;
+      color: var(--white);
+      margin-top: 80px;
     }
 
-    .contact-section h1 {
-      font-size: 3rem;
-      color: #c20000;
-      margin-bottom: 40px;
+    .contact-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 20px;
     }
 
-    .locations {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      max-width: 1000px;
+    .contact-hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
       margin: 0 auto;
+      opacity: 0.9;
     }
 
-    .location {
-      background: white;
-      padding: 30px 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      text-align: left;
+    .contact-content {
+      padding: 120px 0;
+      background: var(--white);
     }
 
-    .location h2 {
-      font-size: 1.8rem;
-      color: #222;
-      margin-bottom: 12px;
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
     }
 
-    .location p {
-      font-size: 1.1rem;
-      color: #444;
-      line-height: 1.6;
-    }
-
-    .phone {
-      font-weight: bold;
-      color: #c20000;
-      margin-top: 10px;
-    }
-
-    .map-link {
-      display: inline-block;
-      margin-top: 12px;
-      color: #ffffff;
-      background-color: #c20000;
-      padding: 10px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .map-link:hover {
-      background-color: #a60000;
-    }
-
-    @media (max-width: 768px) {
-      .contact-section h1 {
-        font-size: 2.2rem;
-      }
-
-      .location h2 {
-        font-size: 1.5rem;
-      }
-
-      .location p {
-        font-size: 1rem;
-      }
-    }
-
-    header.site-header {
-      background-color: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .logo-title {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo {
-      height: 50px;
-      margin-right: 12px;
-    }
-
-    .site-title {
-      font-size: 1.8rem;
-      color: #c20000;
-      font-weight: bold;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 18px;
-      padding: 0;
-      margin: 0;
-    }
-
-    nav ul li {
+    .location-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      overflow: hidden;
+      transition: var(--transition);
       position: relative;
     }
 
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      font-size: 1rem;
-    }
-
-    nav a.active, nav a:hover {
-      color: #c20000;
-    }
-
-    .dropdown-menu {
-      display: none;
+    .location-card::before {
+      content: '';
       position: absolute;
-      background: white;
-      top: 100%;
+      top: 0;
       left: 0;
-      padding: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1;
+      width: 100%;
+      height: 6px;
+      background: var(--gradient-primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
     }
 
-    .dropdown:hover .dropdown-menu {
-      display: block;
+    .location-card:hover::before {
+      transform: scaleX(1);
     }
 
-    .dropdown-menu li {
-      margin-bottom: 6px;
+    .location-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-heavy);
+    }
+
+    .location-header {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .location-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--white);
+    }
+
+    .location-card h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 8px;
+    }
+
+    .location-subtitle {
+      color: #6c757d;
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    .location-body {
+      padding: 30px;
+    }
+
+    .location-info {
+      margin-bottom: 25px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 107, 53, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .info-text {
+      flex: 1;
+    }
+
+    .info-text h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 4px;
+    }
+
+    .info-text p {
+      color: #6c757d;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .phone-number {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .phone-number:hover {
+      text-decoration: underline;
+    }
+
+    .location-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary-action {
+      background: var(--gradient-primary);
+      color: var(--white);
+    }
+
+    .btn-primary-action:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-light);
+    }
+
+    .btn-secondary-action {
+      background: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+    }
+
+    .btn-secondary-action:hover {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+
+    .contact-form-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 120px 0;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-medium);
+      padding: 50px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 25px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: var(--dark-color);
+      font-size: 0.95rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      padding: 15px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: var(--transition);
+      background: #fafafa;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      justify-self: center;
+      padding: 16px 40px;
+      background: var(--gradient-primary);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .quick-contact {
+      background: var(--gradient-primary);
+      color: var(--white);
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .quick-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .quick-contact-item {
+      text-align: center;
+    }
+
+    .quick-contact-item i {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .quick-contact-item h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .quick-contact-item p {
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .locations-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-container {
+        padding: 30px 20px;
+        margin: 0 20px;
+      }
+      
+      .contact-hero {
+        padding: 120px 0 80px;
+        margin-top: 70px;
+      }
+      
+      .contact-content,
+      .contact-form-section {
+        padding: 80px 0;
+      }
+      
+      .location-actions {
+        flex-direction: column;
+      }
+      
+      .action-btn {
+        min-width: auto;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   {% include "header.html" %}
 
-  <!-- Contact Section -->
-  <section class="contact-section">
-    <h1>Find Our Workshops</h1>
-    <div class="locations">
-
-      <div class="location">
-        <h2>Sarkhej, Ahmedabad</h2>
-        <p>Golden Transport, Jaipur, Sarkhej - Gandhinagar Hwy, near Ujala Circle, Ahmedabad, Gujarat 382210</p>
-        <p class="phone">📞 9825800381</p>
-        <a class="map-link" href="https://maps.app.goo.gl/PLDYn4LpBxgSadWw5" target="_blank">View on Google Maps</a>
+  <!-- Contact Hero -->
+  <section class="contact-hero">
+    <div class="container">
+      <div data-aos="fade-up" data-aos-duration="1000">
+        <h1>Visit Our Locations</h1>
+        <p>Find the nearest Hemant Tyre Zone workshop for premium tyre services</p>
       </div>
-
-      <div class="location">
-        <h2>Sarkhej, Ahmedabad</h2>
-        <p>Dhanraj Complex, Near Sarkhej-Bavla Rd, nr. Ujala Chokdi, Sarkhej, Ahmedabad, Sarkhej-Okaf, Gujarat 382210</p>
-        <p class="phone">📞 9825800841</p>
-        <a class="map-link" href="https://maps.app.goo.gl/oDfrYkzpB7khiRdq8" target="_blank">View on Google Maps</a>
-      </div>
-
-      <div class="location">
-        <h2>Kukatpally, Hyderabad</h2>
-        <p>LIG, 24/1, Ground Floor, RTO Office Road, Phase IV, Kukatpally Housing Board Colony, Kukatpally, Hyderabad, Telangana 500072</p>
-        <p class="phone">📞 9000285355</p>
-        <a class="map-link" href="https://maps.app.goo.gl/9Savk4VeuBcBV6uv9" target="_blank">View on Google Maps</a>
-      </div>
-
     </div>
-    {% include "footer.html" %}
+  </section>
 
+  <!-- Contact Content -->
+  <section class="contact-content">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">Our Workshop Locations</h2>
+        <p class="section-subtitle">Professional service centers equipped with state-of-the-art facilities</p>
+      </div>
 
+      <div class="locations-grid">
+        <div class="location-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="location-header">
+            <div class="location-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h2>Sarkhej, Ahmedabad</h2>
+            <p class="location-subtitle">Main Workshop</p>
+          </div>
+          <div class="location-body">
+            <div class="location-info">
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Address</h4>
+                  <p>Golden Transport, Jaipur, Sarkhej - Gandhinagar Hwy, near Ujala Circle, Ahmedabad, Gujarat 382210</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Phone</h4>
+                  <p><a href="tel:+919825800381" class="phone-number">+91 98258 00381</a></p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Working Hours</h4>
+                  <p>Mon - Sat: 9:00 AM - 7:00 PM<br>Sunday: 10:00 AM - 5:00 PM</p>
+                </div>
+              </div>
+            </div>
+            <div class="location-actions">
+              <a href="https://maps.app.goo.gl/PLDYn4LpBxgSadWw5" target="_blank" class="action-btn btn-primary-action">
+                <i class="fas fa-map"></i>
+                View Map
+              </a>
+              <a href="tel:+919825800381" class="action-btn btn-secondary-action">
+                <i class="fas fa-phone"></i>
+                Call Now
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="location-header">
+            <div class="location-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h2>Sarkhej, Ahmedabad</h2>
+            <p class="location-subtitle">Secondary Branch</p>
+          </div>
+          <div class="location-body">
+            <div class="location-info">
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Address</h4>
+                  <p>Dhanraj Complex, Near Sarkhej-Bavla Rd, nr. Ujala Chokdi, Sarkhej, Ahmedabad, Sarkhej-Okaf, Gujarat 382210</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Phone</h4>
+                  <p><a href="tel:+919825800841" class="phone-number">+91 98258 00841</a></p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Working Hours</h4>
+                  <p>Mon - Sat: 9:00 AM - 7:00 PM<br>Sunday: 10:00 AM - 5:00 PM</p>
+                </div>
+              </div>
+            </div>
+            <div class="location-actions">
+              <a href="https://maps.app.goo.gl/oDfrYkzpB7khiRdq8" target="_blank" class="action-btn btn-primary-action">
+                <i class="fas fa-map"></i>
+                View Map
+              </a>
+              <a href="tel:+919825800841" class="action-btn btn-secondary-action">
+                <i class="fas fa-phone"></i>
+                Call Now
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="location-header">
+            <div class="location-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h2>Kukatpally, Hyderabad</h2>
+            <p class="location-subtitle">South India Branch</p>
+          </div>
+          <div class="location-body">
+            <div class="location-info">
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Address</h4>
+                  <p>LIG, 24/1, Ground Floor, RTO Office Road, Phase IV, Kukatpally Housing Board Colony, Kukatpally, Hyderabad, Telangana 500072</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Phone</h4>
+                  <p><a href="tel:+919000285355" class="phone-number">+91 90002 85355</a></p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Working Hours</h4>
+                  <p>Mon - Sat: 9:00 AM - 7:00 PM<br>Sunday: 10:00 AM - 5:00 PM</p>
+                </div>
+              </div>
+            </div>
+            <div class="location-actions">
+              <a href="https://maps.app.goo.gl/9Savk4VeuBcBV6uv9" target="_blank" class="action-btn btn-primary-action">
+                <i class="fas fa-map"></i>
+                View Map
+              </a>
+              <a href="tel:+919000285355" class="action-btn btn-secondary-action">
+                <i class="fas fa-phone"></i>
+                Call Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact-form-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Have questions? We'd love to hear from you</p>
+      </div>
+      
+      <div class="form-container" data-aos="fade-up" data-aos-delay="200">
+        <form class="contact-form" action="#" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name</label>
+              <input type="text" id="name" name="name" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" class="form-input" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input type="email" id="email" name="email" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="service">Service Needed</label>
+              <select id="service" name="service" class="form-input" required>
+                <option value="">Select a service</option>
+                <option value="tyre-fitting">Tyre Fitting</option>
+                <option value="wheel-balancing">Wheel Balancing</option>
+                <option value="wheel-alignment">Wheel Alignment</option>
+                <option value="nitrogen-filling">Nitrogen Filling</option>
+                <option value="puncture-repair">Puncture Repair</option>
+                <option value="wheel-care">Complete Wheel Care</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your requirements..."></textarea>
+          </div>
+          
+          <button type="submit" class="form-submit">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Contact -->
+  <section class="quick-contact">
+    <div class="container">
+      <div data-aos="fade-up">
+        <h2>Need Immediate Assistance?</h2>
+        <div class="quick-contact-grid">
+          <div class="quick-contact-item">
+            <i class="fas fa-phone"></i>
+            <h3>Call Us</h3>
+            <p>24/7 Emergency Support</p>
+          </div>
+          <div class="quick-contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <h3>WhatsApp</h3>
+            <p>Quick Response Guaranteed</p>
+          </div>
+          <div class="quick-contact-item">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p>Detailed Inquiries Welcome</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include "footer.html" %}
+
+  <!-- AOS Animation Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+  </script>
+  <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

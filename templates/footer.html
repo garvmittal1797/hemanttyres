@@ -1,12 +1,232 @@
 <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-            <p>Leave us a review</p>
-            <img src="{{ url_for('static', filename='qrcodeahmoffice.png') }}" alt="Google Review QR" class="qr-img">
-            </div>
-            <div class="footer-right">
-            <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Hemant Tyre Zone Logo" class="footer-logo">
-            <p>Thanks for visiting!</p>
-            </div>
+  <div class="footer-container">
+    <div class="footer-left" data-aos="fade-up" data-aos-delay="100">
+      <div class="footer-section">
+        <h3 class="footer-title">Leave us a review</h3>
+        <p class="footer-subtitle">Your feedback helps us improve</p>
+        <div class="qr-container">
+          <img src="{{ url_for('static', filename='qrcodeahmoffice.png') }}" alt="Google Review QR" class="qr-img">
+          <p class="qr-text">Scan to review on Google</p>
         </div>
-    </footer>
+      </div>
+    </div>
+    
+    <div class="footer-center" data-aos="fade-up" data-aos-delay="200">
+      <div class="footer-section">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('main') }}"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="{{ url_for('about') }}"><i class="fas fa-info-circle"></i> About Us</a></li>
+          <li><a href="{{ url_for('services') }}"><i class="fas fa-cog"></i> Services</a></li>
+          <li><a href="{{ url_for('contact') }}"><i class="fas fa-map-marker-alt"></i> Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-right" data-aos="fade-up" data-aos-delay="300">
+      <div class="footer-section">
+        <div class="footer-logo-container">
+          <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Hemant Tyre Zone Logo" class="footer-logo">
+          <h3 class="footer-brand">Hemant Tyre Zone</h3>
+        </div>
+        <p class="footer-tagline">Premium Tyre Solutions Across India</p>
+        <div class="social-links">
+          <a href="tel:+919825800381" class="social-link" aria-label="Call us">
+            <i class="fas fa-phone"></i>
+          </a>
+          <a href="https://wa.me/919825800381" class="social-link" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="mailto:info@hemanttyrezone.com" class="social-link" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        <p class="footer-thanks">Thanks for visiting!</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content">
+        <p>&copy; 2025 Hemant Tyre Zone. All rights reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color: #FF6B35;"></i> for excellence</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section h3.footer-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+
+.footer-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
+
+.qr-container {
+  text-align: center;
+}
+
+.qr-img {
+  max-height: 150px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  margin-bottom: 12px;
+}
+
+.qr-img:hover {
+  transform: scale(1.05);
+}
+
+.qr-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition);
+  padding: 8px 0;
+}
+
+.footer-links a:hover {
+  color: var(--accent-color);
+  transform: translateX(5px);
+}
+
+.footer-logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  max-height: 120px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  margin-bottom: 16px;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+
+.footer-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+}
+
+.footer-tagline {
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.social-link {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  text-decoration: none;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.social-link:hover {
+  background: var(--accent-color);
+  color: var(--dark-color);
+  transform: translateY(-3px);
+}
+
+.footer-thanks {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.footer-bottom {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .footer-bottom-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .footer-links a {
+    justify-content: center;
+  }
+}
+</style>
