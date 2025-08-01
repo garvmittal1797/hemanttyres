@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Hemant Tyre Zone</title>
+  <link rel="stylesheet" href="../static/style.css" />
+  <script defer src="../static/script.js"></script>
+  <style>
+    .about-hero {
+      background: url('images/tyre zone.jpg') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .about-hero h1,
+    .about-hero p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+
+    .about-hero p {
+      font-size: 1.2rem;
+      max-width: 900px;
+      color: #eee;
+      line-height: 1.8;
+      padding: 0 20px;
+    }
+
+    @media (max-width: 768px) {
+      .about-hero h1 {
+        font-size: 2rem;
+      }
+
+      .about-hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+{% include "header.html" %}
+
+  <!-- About Us Section -->
+  <section class="about-hero">
+    <h1>About Us</h1>
+    <p>
+      Hemant Tyre Zone is a trusted name in tyre solutions and wheel services with multiple retail shops across India. We are not only a one-stop destination for premium passenger vehicle tyres and wheel care — but also a reputed distributor for mining, farm, OTR, LCV and 4-wheeler tyres. Our commitment to quality, affordability, and prompt service makes us a reliable partner whether you're on the road, off-road, or in heavy industry. With state-of-the-art machinery and a team of skilled technicians, we provide tyre fitting, balancing, alignment, and repairs for all types of vehicles. Visit any of our locations for a smooth, safe, and professional experience.
+    </p>
+  </section>
+
+  {% include "footer.html" %}
+
+</body>
+</html>

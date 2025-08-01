@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Hemant Tyre Zone</title>
+  <link rel="stylesheet" href="../static/style.css" />
+  <script defer src="../static/script.js"></script>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    .contact-section {
+      padding: 60px 20px;
+      background: #f7f7f7;
+      text-align: center;
+    }
+
+    .contact-section h1 {
+      font-size: 3rem;
+      color: #c20000;
+      margin-bottom: 40px;
+    }
+
+    .locations {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .location {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      text-align: left;
+    }
+
+    .location h2 {
+      font-size: 1.8rem;
+      color: #222;
+      margin-bottom: 12px;
+    }
+
+    .location p {
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .phone {
+      font-weight: bold;
+      color: #c20000;
+      margin-top: 10px;
+    }
+
+    .map-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: #ffffff;
+      background-color: #c20000;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .map-link:hover {
+      background-color: #a60000;
+    }
+
+    @media (max-width: 768px) {
+      .contact-section h1 {
+        font-size: 2.2rem;
+      }
+
+      .location h2 {
+        font-size: 1.5rem;
+      }
+
+      .location p {
+        font-size: 1rem;
+      }
+    }
+
+    header.site-header {
+      background-color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+      margin-right: 12px;
+    }
+
+    .site-title {
+      font-size: 1.8rem;
+      color: #c20000;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    nav a.active, nav a:hover {
+      color: #c20000;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background: white;
+      top: 100%;
+      left: 0;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li {
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  {% include "header.html" %}
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h1>Find Our Workshops</h1>
+    <div class="locations">
+
+      <div class="location">
+        <h2>Sarkhej, Ahmedabad</h2>
+        <p>Golden Transport, Jaipur, Sarkhej - Gandhinagar Hwy, near Ujala Circle, Ahmedabad, Gujarat 382210</p>
+        <p class="phone">📞 9825800381</p>
+        <a class="map-link" href="https://maps.app.goo.gl/PLDYn4LpBxgSadWw5" target="_blank">View on Google Maps</a>
+      </div>
+
+      <div class="location">
+        <h2>Sarkhej, Ahmedabad</h2>
+        <p>Dhanraj Complex, Near Sarkhej-Bavla Rd, nr. Ujala Chokdi, Sarkhej, Ahmedabad, Sarkhej-Okaf, Gujarat 382210</p>
+        <p class="phone">📞 9825800841</p>
+        <a class="map-link" href="https://maps.app.goo.gl/oDfrYkzpB7khiRdq8" target="_blank">View on Google Maps</a>
+      </div>
+
+      <div class="location">
+        <h2>Kukatpally, Hyderabad</h2>
+        <p>LIG, 24/1, Ground Floor, RTO Office Road, Phase IV, Kukatpally Housing Board Colony, Kukatpally, Hyderabad, Telangana 500072</p>
+        <p class="phone">📞 9000285355</p>
+        <a class="map-link" href="https://maps.app.goo.gl/9Savk4VeuBcBV6uv9" target="_blank">View on Google Maps</a>
+      </div>
+
+    </div>
+    {% include "footer.html" %}
+
+
+</body>
+</html>

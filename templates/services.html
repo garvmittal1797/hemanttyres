@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services | Hemant Tyre Zone</title>
+  <link rel="stylesheet" href="../static/style.css" />
+  <script defer src="../static/script.js"></script>
+  <style>
+    .services-section {
+      background: #f8f8f8;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .services-section h1 {
+      font-size: 3rem;
+      color: #222;
+      margin-bottom: 50px;
+    }
+
+    .service-list {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .service-item h2 {
+      color: #c20000;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+
+    .service-item p {
+      color: #444;
+      font-size: 1.2rem;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .services-section h1 {
+        font-size: 2.4rem;
+      }
+
+      .service-item h2 {
+        font-size: 1.6rem;
+      }
+
+      .service-item p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  {% include "header.html" %}
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <h1>Our Services</h1>
+    <div class="service-list">
+
+      <div class="service-item">
+        <h2>Tyre Fitting</h2>
+        <p>We offer expert tyre fitting services using precision machinery that ensures perfect installation every time. Whether you're upgrading or replacing a worn-out tyre, our trained staff handle your wheels with utmost care and accuracy.</p>
+      </div>
+
+      <div class="service-item">
+        <h2>Wheel Alignment</h2>
+        <p>Accurate wheel alignment improves vehicle stability, increases tyre life, and enhances fuel efficiency. Our alignment systems use advanced sensors to restore factory-specified angles, ensuring optimal performance.</p>
+      </div>
+
+      <div class="service-item">
+        <h2>Nitrogen Air Filling</h2>
+        <p>Nitrogen reduces pressure loss and enhances driving safety by maintaining consistent tyre pressure. It's ideal for long-distance travel, and we provide fast nitrogen top-ups for all tyre types.</p>
+      </div>
+
+      <div class="service-item">
+        <h2>Wheel Balancing</h2>
+        <p>Unbalanced wheels can lead to vibrations, uneven wear, and suspension issues. Our digital balancing system corrects imbalance by accurately placing weights, giving you a smoother, more stable ride.</p>
+      </div>
+
+      <div class="service-item">
+        <h2>Puncture & Flat Tyre Repair</h2>
+        <p>We quickly diagnose and repair punctures using professional-grade patches and plugs. Whether tubeless or tube-type, our repairs are long-lasting and thoroughly tested for safety.</p>
+      </div>
+
+      <div class="service-item">
+        <h2>Complete Wheel Care</h2>
+        <p>We also provide full wheel maintenance including rim inspection, cleaning, and bolt tightening. Proper wheel care improves lifespan and prevents issues like air leakage or uneven wear.</p>
+      </div>
+
+    </div>
+  </section>
+   {% include "footer.html" %}
+</body>
+</html>

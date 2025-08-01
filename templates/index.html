@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hemant Tyre Zone</title>
+  <link rel="stylesheet" href="../static/style.css" />
+  <script defer src="../static/script.js"></script>
+</head>
+
+<body>
+
+  {% include "header.html" %}
+
+  <!-- Hero Section Carousel -->
+  <section class="hero-carousel">
+    <div class="carousel">
+      <img src="../static/hero1.jpg" class="slide active" alt="Tyres">
+      <img src="../static/hero2.jpg" class="slide" alt="Alloy Wheels">
+      <img src="../static/hero3.jpg" class="slide" alt="Batteries">
+      <button class="carousel-btn prev" onclick="prevSlide()">❮</button>
+      <button class="carousel-btn next" onclick="nextSlide()">❯</button>
+    </div>
+  </section>
+  {% include "footer.html" %}
+</body>
+
+</html>
