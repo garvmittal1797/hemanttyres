@@ -49,11 +49,11 @@ jobs:
           
           # Restart the application service using systemd
           echo "Restarting application service..."
-          sudo systemctl restart hemanttyres
+          sudo systemctl restart gunicorn
           
           # Add a health check to ensure the service is active after restart
           # The 'is-active' command will cause the script to fail if the service is not running
           echo "Verifying service status..."
-          sudo systemctl is-active --quiet hemanttyres
+          sudo systemctl is-active --quiet gunicorn
           
           echo "Deployment successful!"
