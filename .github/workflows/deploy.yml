@@ -1,0 +1,23 @@
+name: Deploy Flask to EC2
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ubuntu
+        key: ${{ secrets.EC2_KEY }}
+        script: |
+          cd YOUR_FLASK_REPO
+          git pull
+          source venv/bin/activate
+          pip install -r requirements.txt
+          sudo systemctl restart flaskapp
