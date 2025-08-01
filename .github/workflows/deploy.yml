@@ -11,31 +11,25 @@ jobs:
     name: Deploy to EC2
     runs-on: ubuntu-latest
 
-    # Use a GitHub Environment for added security and visibility
     environment:
       name: production
-      url: http://hemanttyrezone.in # Change to your domain
+      url: http://hemanttyrezone.in
 
     steps:
-    # Step 1: Check out the repository code
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # Step 2: Deploy the application to the EC2 instance via SSH
     - name: Deploy to EC2
       uses: appleboy/ssh-action@v1.0.3
       with:
-        # These values are stored as encrypted secrets in the repository's Environment settings
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_KEY }}
         port: ${{ secrets.EC2_PORT }}
 
-        # The script to execute on the remote server
         script: |
           set -e # Exit immediately if a command exits with a non-zero status.
           
-          # Define project path for easy updates
           PROJECT_PATH="/home/ubuntu/flaskapp/hemanttyres"
           
           echo "Navigating to project directory: $PROJECT_PATH"
@@ -45,14 +39,13 @@ jobs:
           git pull origin main
           
           echo "Installing/updating Python dependencies..."
-          # Use the correct, absolute path to the venv's pip executable
-          **/home/ubuntu/flaskapp/venv/bin/pip install -r requirements.txt**
+          # This is the corrected line without the asterisks
+          /home/ubuntu/flaskapp/venv/bin/pip install -r requirements.txt
           
           echo "Restarting application service..."
           sudo systemctl restart flaskapp.service
           
           echo "Verifying application service status..."
-          # This will fail the workflow if the service is not active
           sudo systemctl is-active --quiet flaskapp.service
           
           echo "✅ Deployment successful!"
