@@ -546,7 +546,7 @@
       </div>
       
       <div class="form-container" data-aos="fade-up" data-aos-delay="200">
-        <form class="contact-form" action="#" method="POST">
+        <form class="contact-form" action="{{ url_for('contact') }}" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="name">Full Name</label>
@@ -586,6 +586,9 @@
             <i class="fas fa-paper-plane"></i>
             Send Message
           </button>
+          {% if success %}
+          <div class="form-success" style="margin-top:20px;color:green;font-weight:600;">Your inquiry has been sent!</div>
+          {% endif %}
         </form>
       </div>
     </div>
